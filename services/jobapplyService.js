@@ -1,10 +1,12 @@
+import JobModel from '../models/jobModel.js';
 import JobApplyModel from '../models/jobapplyModel.js'
 
 
 
 
-export const addnewjobapplyservice = async (jobDetails, applicantDetails) => {
+export const addnewjobapplyservice = async (_id, applicantDetails) => {
     try {
+      const jobDetails =await JobModel.findById(_id);
       const jobApplyInstance = new JobApplyModel({
         jobdetail: jobDetails,
         applicantdetail: applicantDetails,

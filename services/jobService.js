@@ -15,6 +15,7 @@ import JobModel from "../models/jobModel.js";
 export const joblistservice = async () => {
     try {
         let list = await JobModel.find();
+        // console.log("hello")
         return list
     } catch (error) {
         console.log(error, "error occure while showing list")

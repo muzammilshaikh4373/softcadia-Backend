@@ -36,11 +36,12 @@ const uploadfile = async (file) => {
 
 export const addnewjobapply = async (req, res) => {
     try {
+        const { fname, lname, email, mobile, _id } = req.body;
+        console.log("===>" , req.body);
 
-        const jobDetails = JSON.parse(req.body.jobdetail)
-        console.log(req.file, "File received");
-        console.log(req.body)
-        const { fname, lname, email, mobile } = req.body;
+        // const jobDetails = JSON.parse(req.body.jobdetail)
+        // console.log(req.file, "File received");req.body.applicantdetail;
+        // console.log(req.body)
 
 
         if (req.file) {
@@ -50,7 +51,7 @@ export const addnewjobapply = async (req, res) => {
             const uploadResumeUrl = userDocument.Location
 
 
-            const savedJobApply =await addnewjobapplyservice(jobDetails, {
+            const savedJobApply =await addnewjobapplyservice(_id, {
                 fname,
                 lname,
                 email,
@@ -72,7 +73,7 @@ export const addnewjobapply = async (req, res) => {
 
     } catch (error) {
         console.log(error, "Error at addnewjobapply controller");
-        res.status(500).send("Internal Server Error");
+        res.status(500).send(error.message);
     }
 };
 /// admin 

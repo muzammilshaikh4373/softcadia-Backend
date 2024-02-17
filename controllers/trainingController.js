@@ -103,7 +103,7 @@ export const gettrainingbyid = async (req, res) => {
       }
   
       res.status(200).send(trainingidapply);
-      console.log(trainingidapply);
+    //   console.log(trainingidapply);
     } catch (error) {
       console.error(error, 'error at getjobbyid');
       res.status(500).send({ error: 'Internal Server Error' });
